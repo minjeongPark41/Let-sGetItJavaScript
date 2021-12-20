@@ -26,7 +26,7 @@
         const $button = document.querySelector('button');
         const $input = document.querySelector('input');
         let word; // 제시어
-        let newworld; // 새로 입력한 단어 
+        let newWorld; // 새로 입력한 단어 
         const $word = document.querySelector('#word');
         const $order = document.querySelector('#order')
 
@@ -44,36 +44,40 @@
         const onClickButton = () => {
             // 제시어 비어있는지 확인. 
             if (!word){ // 비어있으면
-                word = newworld; // 입력해준게 제시어가 되고
+                word = newWorld; // 입력해준게 제시어가 되고
                 $word.textContent = word; // 제시어 부분을 바꿔서 화면 표시해주기
-                $input.value = ' ';
                 const order = parseInt($order.textContent)
                 if(order + 1 > number){
                     $order.textContent = 1; 
                 }else{
                     $order.textContent = order + 1; 
                 }
+                $input.value = ' ';
+                $input.focus();
             } else { // 비어있지 않으면
-                if (word[word.length - 1] === newworld[0]){ // 단어가 올바르면 (기존 제시어에 이어 올바른지)
-                    word = newworld; 
+                if (word[word.length - 1] === newWorld[0]){ // 단어가 올바르면 (기존 제시어에 이어 올바른지)
+                    word = newWorld; 
                     $word.textContent = word;  
-                    $input.value = ' ';
                     const order = parseInt($order.textContent); // 현재 순서
                     if(order + 1 > number){
                         $order.textContent = 1; 
                     } else{
                         $order.textContent = order +1;
                     }
+                    $input.value = ' ';
+                    $input.focus();
 
                 } else { // 단어가 올바르지 않으면
-
+                    alert('올바르지 않은 단어입니다.')
+                    $input.value=' ';
+                    $input.focus();
                 }
             }
         }
 
         const onInput = (event) => {
             //console.log('글자 입력', event.target.value)
-            newworld = event.target.value // 새로 입력할 때마다 newworld 업데이트
+            newWorld = event.target.value // 새로 입력할 때마다 newworld 업데이트
         }
 
 
