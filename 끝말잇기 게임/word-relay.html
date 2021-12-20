@@ -42,8 +42,8 @@
         }) */
         
         const onClickButton = () => {
-            // 제시어 비어있는지 확인. 
-            if (!word){ // 비어있으면
+            // 제시어 비어있거나 || 입력한 단어가 올바르면 (둘 중 하나만 만족해도 아래 코드 실행)
+            if (!word || word[word.length - 1] === newWorld[0]){ // 비어있으면
                 word = newWorld; // 입력해준게 제시어가 되고
                 $word.textContent = word; // 제시어 부분을 바꿔서 화면 표시해주기
                 const order = parseInt($order.textContent)
@@ -52,27 +52,11 @@
                 }else{
                     $order.textContent = order + 1; 
                 }
-                $input.value = ' ';
-                $input.focus();
-            } else { // 비어있지 않으면
-                if (word[word.length - 1] === newWorld[0]){ // 단어가 올바르면 (기존 제시어에 이어 올바른지)
-                    word = newWorld; 
-                    $word.textContent = word;  
-                    const order = parseInt($order.textContent); // 현재 순서
-                    if(order + 1 > number){
-                        $order.textContent = 1; 
-                    } else{
-                        $order.textContent = order +1;
-                    }
-                    $input.value = ' ';
-                    $input.focus();
-
-                } else { // 단어가 올바르지 않으면
-                    alert('올바르지 않은 단어입니다.')
-                    $input.value=' ';
-                    $input.focus();
-                }
+            } else { // 올바르지 않으면
+                alert('올바르지 않은 단어입니다.')
             }
+            $input.value=' ';
+            $input.focus();
         }
 
         const onInput = (event) => {
