@@ -15,10 +15,52 @@
     <!-- cf) 브라우저에서 확대, 축소는 ctrl + 마우스 wheel -->
     <!-- 파일 우클릭하고 live server로 열거나, f5 누르고 chrome 누르거나 -->
     <div><span id="order">1</span>번째 참가자</div> 
+    <!-- 첫 번째 참가자인지 확인하기 위해서, 제시어가 비어있는지 알기 위해 id="word" 만들어줌 -->
     <div>제시어 : <span id="word"></span></div>
     <input type="text">
     <button>입력</button>
+    <button class="hello">입력</button>
+    <button class="hello">입력</button>
     <script>
+        const number = parseInt(prompt('몇 명이 참여하나요?'), 10);
+        const $button = document.querySelector('button');
+        const $input = document.querySelector('input');
+        let word; // 제시어
+        let newworld; // 새로 입력한 단어 
+        const $word = document.querySelector('#word');
+
+        /* console.log('참여 인원', number)
+        alert(number)
+        confirm('맞나요?') */
+
+        /* document.querySelector('input').addEventListener('input', function(){
+            console.log('이벤트 리스터 확인');
+        })
+        document.querySelector('button').addEventListener('click', function(){
+            console.log('버튼 이벤트 확인');
+        }) */
+        
+        const onClickButton = () => {
+            // 제시어 비어있는지 확인. 
+            if (!word){ // 비어있으면
+                word = newworld; // 입력해준게 제시어가 되고
+                $word.textContent = word; // 제시어 부분을 바꿔서 화면 표시해주기
+                $input.value = ' ';
+            } else { // 비어있지 않으면
+
+            }
+        }
+
+        const onInput = (event) => {
+            //console.log('글자 입력', event.target.value)
+            newworld = event.target.value // 새로 입력할 때마다 newworld 업데이트
+        }
+
+
+        $button.addEventListener('click', onClickButton);
+        $input.addEventListener('input', onInput)
+
+
 
     </script>
 </body>
