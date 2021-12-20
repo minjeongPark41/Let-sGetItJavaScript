@@ -28,6 +28,7 @@
         let word; // 제시어
         let newworld; // 새로 입력한 단어 
         const $word = document.querySelector('#word');
+        const $order = document.querySelector('#order')
 
         /* console.log('참여 인원', number)
         alert(number)
@@ -46,8 +47,27 @@
                 word = newworld; // 입력해준게 제시어가 되고
                 $word.textContent = word; // 제시어 부분을 바꿔서 화면 표시해주기
                 $input.value = ' ';
+                const order = parseInt($order.textContent)
+                if(order + 1 > number){
+                    $order.textContent = 1; 
+                }else{
+                    $order.textContent = order + 1; 
+                }
             } else { // 비어있지 않으면
+                if (word[word.length - 1] === newworld[0]){ // 단어가 올바르면 (기존 제시어에 이어 올바른지)
+                    word = newworld; 
+                    $word.textContent = word;  
+                    $input.value = ' ';
+                    const order = parseInt($order.textContent); // 현재 순서
+                    if(order + 1 > number){
+                        $order.textContent = 1; 
+                    } else{
+                        $order.textContent = order +1;
+                    }
 
+                } else { // 단어가 올바르지 않으면
+
+                }
             }
         }
 
