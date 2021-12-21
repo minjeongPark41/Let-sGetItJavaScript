@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>계산기</title>
+  <style>
+      /* border-box란 content 기준이 아니라 border를 기준으로 계산해주는 것 */
+    * { box-sizing: border-box }
+    #result { width: 180px; height: 50px; margin: 5px; text-align: right }
+    #operator { width: 50px; height: 50px; margin: 5px; text-align: center }
+    button { width: 50px; height: 50px; margin: 5px }
+  </style>
+</head>
+
+<!-- 계산기 버튼 구현 -->
+<!-- 이 태그가 js로 구현될 것 같다 싶으면 id 달아서 쉽게 선택하게 해주기 -->
+<!-- readonly는 사용자가 글자를 쓸 수 없게 해주는 것. (대신에 js로는 글자 입력 가능하도록) -->
+<body>
+  <input readonly id="operator">
+  <input readonly type="number" id="result">
+  <div class="row">
+    <button id="num-7">7</button>
+    <button id="num-8">8</button>
+    <button id="num-9">9</button>
+    <button id="plus">+</button>
+  </div>
+  <div class="row">
+    <button id="num-4">4</button>
+    <button id="num-5">5</button>
+    <button id="num-6">6</button>
+    <button id="minus">-</button>
+  </div>
+  <div class="row">
+    <button id="num-1">1</button>
+    <button id="num-2">2</button>
+    <button id="num-3">3</button>
+    <button id="divide">/</button>
+  </div>
+  <div class="row">
+    <button id="clear">C</button>
+    <button id="num-0">0</button>
+    <button id="calculate">=</button>
+    <button id="multiply">x</button>
+  </div>
+
+<script>
+    // 저장 공간으로 변수 만들어주기
+    let numOne = '';
+    let operator = '';
+    let numTwo = '';
+    // 태그 선택 (여기 안에 글자를 넣어줄 것)
+    const $operator = document.querySelector('#operator');
+    const $result = document.querySelector('#result');
+    const onClickNumber = (number) => () => {
+            if(operator) {
+                numberTwo += 'number';
+            } else {
+                numberOne += 'number';
+            }
+            $result.value += 'number';
+        }
+        // return undefined 생략된 것
+        // 즉 아래 코드에 함수 자리인데  undefined를 넣은 셈이 되는 것
+        // -> return 안에 ! 함수를 넣어줘야
+        // 고차 함수 (high order function) 사용
+    }
+
+    // 버튼 하나하나에 js 동작을 넣어주도록 
+
+    // 버튼 '0'을 누른다고 해볼 때
+    document.querySelector('#num-0').addEventListener('click', onClickNumber('0'));
+    document.querySelector('#num-1').addEventListener('click', onClickNumber('1'));
+    document.querySelector('#num-2').addEventListener('click', onClickNumber('2'));
+    document.querySelector('#num-3').addEventListener('click', onClickNumber('3'));
+    document.querySelector('#num-4').addEventListener('click', onClickNumber('4'));
+    document.querySelector('#num-5').addEventListener('click', onClickNumber('5'));
+    document.querySelector('#num-6').addEventListener('click', onClickNumber('6'));
+    document.querySelector('#num-7').addEventListener('click', onClickNumber('7'));
+    document.querySelector('#num-8').addEventListener('click', onClickNumber('8'));
+    document.querySelector('#num-9').addEventListener('click', onClickNumber('9'));
+    document.querySelector('#plus').addEventListener('click', () => {});
+    document.querySelector('#minus').addEventListener('click', () => {});
+    document.querySelector('#divide').addEventListener('click', () => {});
+    document.querySelector('multiply').addEventListener('click', () => {});
+    document.querySelector('#calculate').addEventListener('click', () => {});
+    document.querySelector('#clear').addEventListener('click', () => {});
+
+
+</script>
+</body>
