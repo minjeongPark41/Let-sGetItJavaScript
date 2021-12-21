@@ -57,7 +57,7 @@
                 return;
             } 
             if(!numberTwo){
-                $result.value = ' '
+                $result.value = ''
             }
             numberTwo += number;
             $result.value += number;
@@ -113,11 +113,23 @@
               default:
                 break;
             }
+            /* 연달아 계산은 아래 코드 추가 */
+            $operator.value = '';
+            numberOne = $result.value;
+            operator = '';
+            numberTwo = ''; 
+
           } else {
             alert('숫자를 먼저 입력하세요.');
           }
         });
-    document.querySelector('#clear').addEventListener('click', () => {});
+    document.querySelector('#clear').addEventListener('click', () => {
+        numberOne = '';
+        operator = '';
+        numberTwo = '';
+        $operator.value = '';
+        $result.value = '';
+    });
 
 
 </script>
