@@ -44,26 +44,40 @@
 
 <script>
     // 저장 공간으로 변수 만들어주기
-    let numOne = '';
+    let numberOne = '';
     let operator = '';
-    let numTwo = '';
+    let numberTwo = '';
     // 태그 선택 (여기 안에 글자를 넣어줄 것)
     const $operator = document.querySelector('#operator');
     const $result = document.querySelector('#result');
     const onClickNumber = (number) => () => {
-            if(operator) {
-                numberTwo += 'number';
-            } else {
-                numberOne += 'number';
+            if(!operator) {
+                numberOne += number;
+                $result.value += number;
+                return;
+            } 
+            if(!numberTwo){
+                $result.value = ' '
             }
-            $result.value += 'number';
+            numberTwo += number;
+            $result.value += number;
+            
+            
         }
         // return undefined 생략된 것
         // 즉 아래 코드에 함수 자리인데  undefined를 넣은 셈이 되는 것
         // -> return 안에 ! 함수를 넣어줘야
-        // 고차 함수 (high order function) 사용
-    }
-
+        // 고차 함수 (high order function) 사용 or 고차함수 사용 않고 event.target.textContent 사용
+    
+    const onClickOperator = (op) => () => {
+            if (numberOne){
+                operator = op;
+                $operator.value = op;
+            } else{
+                alert('숫자를 먼저 입력해주세요');
+            }
+        }
+    
     // 버튼 하나하나에 js 동작을 넣어주도록 
 
     // 버튼 '0'을 누른다고 해볼 때
@@ -77,10 +91,10 @@
     document.querySelector('#num-7').addEventListener('click', onClickNumber('7'));
     document.querySelector('#num-8').addEventListener('click', onClickNumber('8'));
     document.querySelector('#num-9').addEventListener('click', onClickNumber('9'));
-    document.querySelector('#plus').addEventListener('click', () => {});
-    document.querySelector('#minus').addEventListener('click', () => {});
-    document.querySelector('#divide').addEventListener('click', () => {});
-    document.querySelector('multiply').addEventListener('click', () => {});
+    document.querySelector('#plus').addEventListener('click', onClickOperator('+'));
+    document.querySelector('#minus').addEventListener('click', onClickOperator('-'));
+    document.querySelector('#divide').addEventListener('click', onClickOperator('/'));
+    document.querySelector('#multiply').addEventListener('click', onClickOperator('*'));
     document.querySelector('#calculate').addEventListener('click', () => {});
     document.querySelector('#clear').addEventListener('click', () => {});
 
