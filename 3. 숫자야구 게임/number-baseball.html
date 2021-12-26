@@ -1,0 +1,22 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자 야구</title>
+</head>
+<body>
+    <!-- 요새 html5는 input이 있으면 form으로 감싼다. -->
+    <form id="form"> 
+        <input type="text" id="input">
+        <button>확인</button>
+    </form>
+    <!-- 사용자들 기록 쌓일 것을 미리 처리 -->
+    <div id="logs"></div>
+    <script>
+        const $input = document.querySelector('#input');
+        const $form = document.querySelector('#form');
+        const $logs = document.querySelector('#logs');
+    </script>
+</body>
+</html>
